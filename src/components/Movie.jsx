@@ -5,7 +5,10 @@ function Movie(props) {
 			className='card'
 			id={id}>
 			<div className='card__img'>
-				<img src={img} />
+				<img
+					src={img === 'N/A' ? 'https://placehold.co/400x600?text=No+image' : img}
+					alt={title}
+				/>
 			</div>
 			<div className='card__footer'>
 				<h2 className='card__title'>{title}</h2>

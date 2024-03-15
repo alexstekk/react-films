@@ -17,7 +17,6 @@
  }
 
  :root {
- 	--white-color: #fff;
  	--primary-color: #003A75;
  	--secondary-color: #3399FF;
  }
@@ -25,11 +24,12 @@
  .container {
  	max-width: 1480px;
  	margin: 0 auto;
+ 	padding: 0 1rem;
  }
 
  .header,
  .footer {
- 	color: var(--white-color);
+ 	color: #fff;
  	background-color: var(--primary-color);
  	padding: 1rem;
  }
@@ -63,10 +63,10 @@
  .main__container {}
 
  .movies {
- 	padding: 2rem 0;
- 	gap: 1rem;
+ 	gap: 2rem;
  	display: grid;
  	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	padding-bottom: 2rem;
  }
 
  .card {
@@ -108,4 +108,45 @@
  	height: 100%;
  	object-fit: cover;
  	object-position: center;
+ }
+
+ .preloader {
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	min-height: calc(100vh - 70px - 51px);
+ }
+
+ .search {
+ 	padding: 2rem 0;
+ 	display: flex;
+ }
+
+ .search__input {
+ 	height: 3rem;
+ 	font-size: 1.25rem;
+ 	padding: 0.5rem 1rem;
+ 	flex-grow: 1;
+ 	border: none;
+ 	border-radius: 5px 0 0 5px;
+ 	overflow: hidden;
+ }
+
+ .search__input:focus {
+ 	outline: none;
+ }
+
+ .search__button {
+ 	color: #fff;
+ 	border: none;
+ 	padding: 0.5rem 2rem;
+ 	border-radius: 0 5px 5px 0;
+ 	cursor: pointer;
+ 	font-size: 1.25rem;
+ 	background-color: var(--primary-color);
+ 	transition: background-color 0.3s ease-in-out 0s;
+ }
+
+ .search__button:hover {
+ 	background-color: var(--secondary-color);
  }

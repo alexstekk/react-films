@@ -1,8 +1,10 @@
 import { Movie } from './Movie';
+import { NotFound } from './NotFound';
 
 function Movies(props) {
 	const { movies } = props;
-	return (
+
+	return movies ? (
 		<div className='movies'>
 			{movies.map((movie) => (
 				<Movie
@@ -11,6 +13,8 @@ function Movies(props) {
 				/>
 			))}
 		</div>
+	) : (
+		<NotFound />
 	);
 }
 

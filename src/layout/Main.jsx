@@ -6,31 +6,31 @@ import { Search } from '../components/Search';
 class Main extends React.Component {
 	state = {
 		movies: [],
+		isLoading: true,
 	};
 	componentDidMount() {
 		fetch('http://www.omdbapi.com/?apikey=6c6f4eae&s=kung-fu')
 			.then((response) => response.json())
-			.then((data) => this.setState({ movies: data.Search }));
+			.then((data) => this.setState({ movies: data.Search, isLoading: false }));
 	}
 
-	handleSearch = (query) => {
-		// console.log('handleSearch', query);
+	handleSearch = (query, type) => {
 		if (query) {
-			fetch(`http://www.omdbapi.com/?apikey=6c6f4eae&s=${query}`)
+			this.setState({ isLoading: true });
+			fetch(`http://www.omdbapi.com/?apikey=6c6f4eae&s=${query}${type === '' ? '' : `&type=${type}`}`)
 				.then((response) => response.json())
-				.then((data) => this.setState({ movies: data.Search }));
-		}
+				.then((data) => this.setState({ movies: data.Search, isLoading: false }));
+		} else return;
 	};
 
 	render() {
-		const { movies } = this.state;
+		const { movies, isLoading } = this.state;
 
 		return (
 			<main className='main'>
 				<div className='main__container container'>
 					<Search handleSearch={this.handleSearch} />
-					{/* {movies?.length ? <Movies movies={movies} /> : movies === undefined ? <p>Nothing found</p> : <Preloader />} */}
-					{movies === undefined ? <p>Nothing found</p> : movies.length ? <Movies movies={movies} /> : <Preloader />}
+					{isLoading ? <Preloader /> : <Movies movies={movies} />}
 				</div>
 			</main>
 		);

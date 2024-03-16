@@ -11,7 +11,7 @@ class Main extends React.Component {
 		isLoading: true,
 	};
 	componentDidMount() {
-		fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=kung-fu`)
+		fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=kung-fu`)
 			.then((response) => response.json())
 			.then((data) => this.setState({ movies: data.Search, isLoading: false }));
 	}
@@ -19,7 +19,7 @@ class Main extends React.Component {
 	handleSearch = (query, type) => {
 		if (query) {
 			this.setState({ isLoading: true });
-			fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}${type === '' ? '' : `&type=${type}`}`)
+			fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}${type === '' ? '' : `&type=${type}`}`)
 				.then((response) => response.json())
 				.then((data) => this.setState({ movies: data.Search, isLoading: false }));
 		} else return;

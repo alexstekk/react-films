@@ -120,7 +120,7 @@
 
  .not-found {
  	flex-direction: column;
-	gap: 2rem;
+ 	gap: 2rem;
  }
 
  .search {
@@ -133,7 +133,7 @@
  	height: 3rem;
  	font-size: 1.25rem;
  	padding: 0.5rem 1rem;
- 	flex-grow: 1;
+ 	flex: 1 1 auto;
  	border: none;
  	border-radius: 5px 0 0 5px;
  	overflow: hidden;
